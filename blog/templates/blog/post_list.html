@@ -1,24 +1,11 @@
-{% load static %}
+{% extends 'blog/base.html' %}
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Marko's Blog</title>
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-        <header class="page-header">
-            <h1><a href="/">Marko's Blog</a></h1>
-        </header>
-
-        <main class="content">
-            {% for post in posts %}
-                <article class="post">
-                    <p class="date">Published: {{ post.published_date }}</p>
-                    <h2><a href="">{{ post.title }}</a></h2>
-                    <p>{{ post.text|linebreaksbr }}</p>
-                </article>
-            {% endfor %}
-        </main>
-    </body>
-</html>
+{% block content %}
+    {% for post in posts %}
+        <article class="post">
+            <p class="date">Published: {{ post.published_date }}</p>
+            <h2><a href="">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
