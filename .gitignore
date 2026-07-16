@@ -1,0 +1,6 @@
+django-env/
+__pycache__/
+*.pyc
+.vscode/
+db.sqlite3
+django test password.txt
