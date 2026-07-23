@@ -3,16 +3,19 @@
 {% block content %}
     {% for post in posts %}
         <article class="post">
-            <p class="date">Published: {{ post.published_date }}</p>
+            <p class="date">
+                Created: {{ post.created_date }}
+            </p>
+
             <h2>
                 <a href="{% url 'post_detail' pk=post.pk %}">
                     {{ post.title }}
                 </a>
             </h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-            <a href="{% url 'post_detail' pk=post.pk %}">
-                Comments: {{ post.approved_comments.count }}
-            </a>
+
+            <p>{{ post.text|truncatechars:200 }}</p>
         </article>
+    {% empty %}
+        <p>No draft posts are available.</p>
     {% endfor %}
 {% endblock %}
